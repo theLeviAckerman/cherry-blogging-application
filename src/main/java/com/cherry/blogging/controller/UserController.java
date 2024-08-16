@@ -18,6 +18,11 @@ public class UserController {
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
         UserDto createdUser = this.userService.createUser(userDto);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
+    }
 
+    @GetMapping("/fetch/{userId}")
+    public ResponseEntity<UserDto> fetchUser(@PathVariable int userId){
+        UserDto fetchedUser = this.userService.getUserById(userId);
+        return new ResponseEntity<>(fetchedUser, HttpStatus.OK);
     }
 }
