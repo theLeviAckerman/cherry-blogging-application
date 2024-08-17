@@ -47,6 +47,7 @@ public class UserController {
     public ResponseEntity<CommonApiResponse> deleteUser(@PathVariable("userID") Integer userId){
         this.userService.deleteUser(userId);
         CommonApiResponse commonApiResponse = new CommonApiResponse("User Deleted Successfully", true);
+
         return new ResponseEntity<>(commonApiResponse, HttpStatus.OK);
 
     }
