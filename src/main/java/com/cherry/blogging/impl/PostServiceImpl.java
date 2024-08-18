@@ -3,6 +3,7 @@ package com.cherry.blogging.impl;
 import com.cherry.blogging.dto.CategoryDto;
 import com.cherry.blogging.dto.PostDto;
 import com.cherry.blogging.dto.UserDto;
+import com.cherry.blogging.entity.Category;
 import com.cherry.blogging.entity.Post;
 import com.cherry.blogging.entity.User;
 import com.cherry.blogging.mapper.CategoryMapper;
@@ -71,7 +72,11 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostDto> getAllPostByCategory(Integer categoryId) {
-        return null;
+
+        CategoryDto categoryById = this.categoryService.getCategoryById(categoryId);
+        Category category = CategoryMapper.INSTANCE.dtoToCategory(categoryById);
+        List<Post> postList = this.postRepo.findByCategory(category);
+        return postList.stream().map(PostMapper.INSTANCE::postToPostDto).collect(Collectors.toList());
     }
 
     @Override
@@ -80,8 +85,7 @@ public class PostServiceImpl implements PostService {
         User user = UserMapper.INSTANCE.userDtoToUser(userById);
         List<Post> postList = this.postRepo.findByUser(user);
 
-        List<PostDto> postDtoList = postList.stream().map(PostMapper.INSTANCE::postToPostDto).collect(Collectors.toList());
-        return postDtoList;
+        return postList.stream().map(PostMapper.INSTANCE::postToPostDto).collect(Collectors.toList());
     }
 
 }

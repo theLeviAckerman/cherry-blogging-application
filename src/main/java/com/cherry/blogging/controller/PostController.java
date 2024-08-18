@@ -33,6 +33,13 @@ public class PostController {
         return  new ResponseEntity<>(allPostByUser,HttpStatus.OK);
     }
 
+    @GetMapping("/fetch/category/{categoryId}")
+    public  ResponseEntity<List<PostDto>> fetchPostByCategoryId(@PathVariable Integer categoryId){
+        List<PostDto> allPostByUser = this.postService.getAllPostByCategory(categoryId);
+        return  new ResponseEntity<>(allPostByUser,HttpStatus.OK);
+    }
+
+
 
 
 
