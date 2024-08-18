@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @GetMapping("/fetch/{userId}")
-    public ResponseEntity<UserDto> fetchUser(@PathVariable int userId) {
+    public ResponseEntity<UserDto> fetchUser(@PathVariable Integer userId) {
         UserDto fetchedUser = this.userService.getUserById(userId);
         return new ResponseEntity<>(fetchedUser, HttpStatus.OK);
     }
@@ -46,7 +46,7 @@ public class UserController {
     @DeleteMapping("/delete/{userID}")
     public ResponseEntity<CommonApiResponse> deleteUser(@PathVariable("userID") Integer userId){
         this.userService.deleteUser(userId);
-        CommonApiResponse commonApiResponse = new CommonApiResponse("User Deleted Successfully", true);
+        CommonApiResponse commonApiResponse = new CommonApiResponse("User Deleted Successfully", true, HttpStatus.OK);
 
         return new ResponseEntity<>(commonApiResponse, HttpStatus.OK);
 
