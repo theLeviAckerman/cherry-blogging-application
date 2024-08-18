@@ -6,10 +6,13 @@ import com.cherry.blogging.execption.ResourceNotFoundException;
 import com.cherry.blogging.mapper.CategoryMapper;
 import com.cherry.blogging.respository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
