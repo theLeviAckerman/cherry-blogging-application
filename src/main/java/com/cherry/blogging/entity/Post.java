@@ -30,7 +30,11 @@ public class Post {
     private Date addedDate;
 
 
+    @ManyToOne
+    private Category category;
 
+    @ManyToOne
+    private User user;
 
 
 }
