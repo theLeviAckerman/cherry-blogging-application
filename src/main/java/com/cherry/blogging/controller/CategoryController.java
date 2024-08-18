@@ -23,7 +23,7 @@ public class CategoryController {
 
     @GetMapping("/fetch/{categoryId}")
     public ResponseEntity<CategoryDto> fetchCategory(@PathVariable Integer categoryId) {
-        CategoryDto category = this.categoryService.getCategory(categoryId);
+        CategoryDto category = this.categoryService.getCategoryById(categoryId);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
@@ -48,7 +48,7 @@ public class CategoryController {
 
     @DeleteMapping("/delete/{categoryId}")
     public ResponseEntity<CommonApiResponse> deleteCategory(@PathVariable Integer categoryId){
-        this.categoryService.deleteCategory(categoryId);
+        this.categoryService.deleteCategoryById(categoryId);
         CommonApiResponse apiResponse = new CommonApiResponse("Category Deleted Successfully", true,HttpStatus.OK);
         return  new ResponseEntity<>(apiResponse,HttpStatus.OK);
 

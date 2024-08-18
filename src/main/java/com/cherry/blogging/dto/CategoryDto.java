@@ -5,14 +5,14 @@ import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import jdk.jfr.DataAmount;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
 public class CategoryDto {
 
     private int id;

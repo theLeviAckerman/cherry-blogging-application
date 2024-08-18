@@ -1,10 +1,11 @@
-package com.cherry.blogging.service;
+package com.cherry.blogging.impl;
 
 import com.cherry.blogging.dto.UserDto;
 import com.cherry.blogging.entity.User;
 import com.cherry.blogging.execption.ResourceNotFoundException;
 import com.cherry.blogging.mapper.UserMapper;
 import com.cherry.blogging.respository.UserRepository;
+import com.cherry.blogging.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
-public class UserServiceImpl implements  UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepo;

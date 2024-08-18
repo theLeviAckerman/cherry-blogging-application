@@ -1,10 +1,11 @@
-package com.cherry.blogging.service;
+package com.cherry.blogging.impl;
 
 import com.cherry.blogging.dto.CategoryDto;
 import com.cherry.blogging.entity.Category;
 import com.cherry.blogging.execption.ResourceNotFoundException;
 import com.cherry.blogging.mapper.CategoryMapper;
 import com.cherry.blogging.respository.CategoryRepository;
+import com.cherry.blogging.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDto getCategory(Integer categoryId) {
+    public CategoryDto getCategoryById(Integer categoryId) {
         Category category = this.categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category", "categoryId", categoryId));
         return CategoryMapper.INSTANCE.categoryToDto(category);
     }
@@ -41,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void deleteCategory(Integer categoryId) {
+    public void deleteCategoryById(Integer categoryId) {
         Category category = this.categoryRepo.findById(categoryId).orElseThrow(() -> new ResourceNotFoundException("Category", "categoryId", categoryId));
         this.categoryRepo.delete(category);
     }
